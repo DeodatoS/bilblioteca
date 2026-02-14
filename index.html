@@ -200,6 +200,38 @@ body {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* ── Mobile responsive ── */
+@media (max-width: 600px) {
+  .header { padding: 0.5rem 0.8rem; }
+  .header-inner { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+  .header h1 { font-size: 1.15rem; }
+  .stats-bar { gap: 0.6rem; }
+  .stat { font-size: 0.7rem; }
+  .stat strong { font-size: 0.82rem; }
+
+  .search-section { padding: 0.8rem 0.8rem 0; margin-top: 0.8rem; }
+  .search-row { flex-direction: column; gap: 0.5rem; }
+  .search-input { min-width: unset; width: 100%; font-size: 16px; }
+  .lang-filter { flex-wrap: wrap; }
+  .lang-btn { padding: 0.5rem 0.8rem; font-size: 0.75rem; }
+
+  .main { padding: 0.8rem; gap: 1rem; }
+  .tag-panel { position: static; max-height: none; padding: 0.8rem; }
+  .tag-cloud { gap: 0.3rem; }
+  .tag-chip { padding: 0.35rem 0.6rem; font-size: 0.72rem; }
+  .author-list { max-height: 160px; }
+
+  .book-grid { grid-template-columns: 1fr; gap: 0.5rem; }
+  .book-card { padding: 0.75rem 0.85rem; }
+  .book-title { font-size: 0.85rem; }
+  .book-author { font-size: 0.75rem; }
+  .book-path { font-size: 0.62rem; }
+
+  .pagination { gap: 0.25rem; }
+  .page-btn { padding: 0.35rem 0.6rem; font-size: 0.72rem; }
+  .results-header { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+}
 </style>
 </head>
 <body>
@@ -522,7 +554,7 @@ function setupEvents() {
   });
 }
 
-start();
+try { start(); } catch(e) { document.body.innerHTML = '<div style="color:#fff;padding:2rem;"><h2>Errore JS</h2><pre>' + e.message + '\n' + e.stack + '</pre><p>Libri nel JSON: ' + (typeof CATALOG_DATA !== 'undefined' ? CATALOG_DATA.books.length : 'CATALOG_DATA non definito') + '</p></div>'; }
 </script>
 </body>
 </html>
